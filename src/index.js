@@ -44,6 +44,13 @@ client.on('messageCreate' , (message) =>{
      // Mention the user in the reply
      message.reply(`oh the only nigga i know is  <@${userId}>`);
    }
+   if (message.content === "hitler") {
+     // Replace USER_ID with the actual user's ID
+     const userId = "356405780116930563"; // Example user ID
+
+     // Mention the user in the reply
+     message.reply(`Best Man in history  <@${userId}>`);
+   }
 
 
     
