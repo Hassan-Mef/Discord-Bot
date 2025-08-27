@@ -99,6 +99,25 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) return;
+
+  const { commandName } = interaction;
+
+  if (commandName === "headtail") {
+    let result = Math.random(); // returns value between 0 and 1
+
+    if (result > 0.5) {
+      await interaction.reply("You got Heads 🎉");
+    } else {
+      await interaction.reply("You got Tails 🎉");
+    }
+  }
+});
+
+client.on
+
+
 
 client.login(process.env.TOKEN);
 

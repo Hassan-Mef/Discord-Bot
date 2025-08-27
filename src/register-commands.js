@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const { REST, Routes } = require("discord.js");
 
 const commands = [
@@ -22,14 +22,17 @@ const commands = [
       },
     ],
   },
+  {
+    name: "headtail", // must be lowercase, no spaces
+    description: "Flips a coin and gives Head or Tail",
+  },
 ];
-
 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log('Resgistering slah Commands...')
+    console.log("Resgistering slah Commands...");
     await rest.put(
       Routes.applicationGuildCommands(
         process.env.CLIENT_ID,
@@ -38,7 +41,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
       { body: commands }
     );
 
-    console.log('Slash Commands registered')
+    console.log("Slash Commands registered");
   } catch (error) {
     console.log(`There was an error ${error}`);
   }
