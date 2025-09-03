@@ -1,5 +1,8 @@
 require('dotenv').config();
 const {Client , IntentsBitField} = require('discord.js');
+const { getJoke, makeJokeEmbed } = require('./jokeAPI');
+
+
 
 const client = new Client(
     {
@@ -115,7 +118,21 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.on
+client.on("interactionCreate" , async(interaction) =>{
+  if (!interaction.isChatInputCommand()) return;
+
+  await interaction.deferReply();
+
+  try{
+  const joke = await getJoke();
+  const embedJoke = makeJokeEmbed(joke);
+
+  await interaction.editReply({embeds: [embedJoke]});
+  } catch(err) {
+    console.log(err);
+    await interaction.editReply("⚠️ Sorry, I couldn't fetch a joke right now.");
+  }
+});
 
 
 

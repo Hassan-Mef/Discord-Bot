@@ -26,6 +26,24 @@ const commands = [
     name: "headtail", // must be lowercase, no spaces
     description: "Flips a coin and gives Head or Tail",
   },
+  {
+    name: 'joke',
+    description: 'Get a random Joke ',
+    options : [
+       {  
+        name : 'category',
+        description : ' Type of Joke',
+        type : 3,
+        required :false,
+        choices : [
+          {name : 'Any', value :'Any'},
+          {name : 'Programming', value :'Programming'},
+          {name : 'Dark', value :'Dark'},
+        ]
+       }
+
+    ]
+  }
 ];
 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
