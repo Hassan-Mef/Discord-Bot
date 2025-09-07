@@ -43,6 +43,18 @@ const commands = [
        }
 
     ]
+  },
+  {
+    name : 'userinfo',
+    description : ' Get Info about a user ',
+    options : [
+      {
+        name : 'target',
+        description : 'The user you want info about',
+        type : 6,
+        required: false,
+      }
+    ]
   }
 ];
 

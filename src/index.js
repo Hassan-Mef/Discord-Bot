@@ -134,6 +134,26 @@ client.on("interactionCreate" , async(interaction) =>{
   }
 });
 
+client.on("interactionCreate", async(interaction) =>{
+  if (!interaction.isChatInputCommand()) return;
+  if (interaction.commandName !== "userinfo") return;
+  
+  const user = interaction.options.getUser('target') || interaction.user ;
+  const member = await interaction.guild.member.fetch(user.id);
+
+  const embed = new EmbedBuilder()
+    .setTitle(`User Info: ${user.tag}`)
+    .setThumbnail(user.displayAvatarURL())
+    .addFields(
+      { name: 'ID', value: user.id, inline: true },
+      { name: 'Joined Discord', value: `<t:${Math.floor(user.createdTimestamp / 1000)}:R>`, inline: true },
+      { name: 'Joined Server', value: `<t:${Math.floor(member.joinedTimestamp / 1000)}:R>`, inline: true }
+    )
+    .setColor(0x5865f2);
+
+    await interaction.reply({embeds: [embed]});
+});
+
 
 
 client.login(process.env.TOKEN);
